@@ -1,0 +1,28 @@
+[versions]
+# https://plugins.gradle.org/plugin/org.springframework.boot
+springBoot = "3.3.3"
+# https://plugins.gradle.org/plugin/io.spring.dependency-management
+springDependencyManagement = "1.1.6"
+# https://plugins.gradle.org/plugin/com.diffplug.spotless
+spotless = "6.25.0"
+netty = "4.1.112.Final"
+gson = "2.11.0"
+groovy = "4.0.22"
+slf4j = "2.0.16"
+jakartaAnnotationApi = "3.0.0"
+mybatisSpringBootStarter = "3.0.3"
+
+
+[libraries]
+nettyCodecHttp = { module = "io.netty:netty-codec-http", version.ref = "netty" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+groovy = { module = "org.apache.groovy:groovy", version.ref = "groovy" }
+slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+jakartaAnnotationApi = { module = "jakarta.annotation:jakarta.annotation-api", version.ref = "jakartaAnnotationApi" }
+mybatisSpringBootStarter = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter", version.ref = "mybatisSpringBootStarter" }
+
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
+spring-dependencyManagement = { id = "io.spring.dependency-management", version.ref = "springDependencyManagement" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }

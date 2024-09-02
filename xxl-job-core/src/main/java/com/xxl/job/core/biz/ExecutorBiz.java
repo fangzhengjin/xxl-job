@@ -2,13 +2,12 @@ package com.xxl.job.core.biz;
 
 import com.xxl.job.core.biz.model.*;
 
-/**
- * Created by xuxueli on 17/3/1.
- */
+/** Created by xuxueli on 17/3/1. */
 public interface ExecutorBiz {
 
     /**
      * beat
+     *
      * @return
      */
     public ReturnT<String> beat();
@@ -23,6 +22,7 @@ public interface ExecutorBiz {
 
     /**
      * run
+     *
      * @param triggerParam
      * @return
      */
@@ -30,6 +30,7 @@ public interface ExecutorBiz {
 
     /**
      * kill
+     *
      * @param killParam
      * @return
      */
@@ -37,9 +38,9 @@ public interface ExecutorBiz {
 
     /**
      * log
+     *
      * @param logParam
      * @return
      */
     public ReturnT<LogResult> log(LogParam logParam);
-
 }

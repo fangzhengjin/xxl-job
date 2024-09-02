@@ -1,12 +1,11 @@
 package com.xxl.job.core.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * file tool
@@ -15,7 +14,6 @@ import java.io.IOException;
  */
 public class FileUtil {
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
-
 
     /**
      * delete recursively
@@ -38,7 +36,6 @@ public class FileUtil {
         return false;
     }
 
-
     public static void deleteFile(String fileName) {
         // file
         File file = new File(fileName);
@@ -46,7 +43,6 @@ public class FileUtil {
             file.delete();
         }
     }
-
 
     public static void writeFileContent(File file, byte[] data) {
 
@@ -72,7 +68,6 @@ public class FileUtil {
                 }
             }
         }
-
     }
 
     public static byte[] readFileContent(File file) {
@@ -99,7 +94,6 @@ public class FileUtil {
             }
         }
     }
-
 
     /*public static void appendFileLine(String fileName, String content) {
 

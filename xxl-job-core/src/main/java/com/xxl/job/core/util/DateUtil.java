@@ -1,8 +1,5 @@
 package com.xxl.job.core.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,6 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * date util
@@ -24,14 +23,16 @@ public class DateUtil {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
-    private static final ThreadLocal<Map<String, DateFormat>> dateFormatThreadLocal = new ThreadLocal<Map<String, DateFormat>>();
+    private static final ThreadLocal<Map<String, DateFormat>> dateFormatThreadLocal =
+            new ThreadLocal<Map<String, DateFormat>>();
+
     private static DateFormat getDateFormat(String pattern) {
-        if (pattern==null || pattern.trim().length()==0) {
+        if (pattern == null || pattern.trim().length() == 0) {
             throw new IllegalArgumentException("pattern cannot be empty.");
         }
 
         Map<String, DateFormat> dateFormatMap = dateFormatThreadLocal.get();
-        if(dateFormatMap!=null && dateFormatMap.containsKey(pattern)){
+        if (dateFormatMap != null && dateFormatMap.containsKey(pattern)) {
             return dateFormatMap.get(pattern);
         }
 
@@ -87,7 +88,7 @@ public class DateUtil {
      * @return
      * @throws ParseException
      */
-    public static Date parseDate(String dateString){
+    public static Date parseDate(String dateString) {
         return parse(dateString, DATE_FORMAT);
     }
 
@@ -115,11 +116,14 @@ public class DateUtil {
             Date date = getDateFormat(pattern).parse(dateString);
             return date;
         } catch (Exception e) {
-            logger.warn("parse date error, dateString = {}, pattern={}; errorMsg = {}", dateString, pattern, e.getMessage());
+            logger.warn(
+                    "parse date error, dateString = {}, pattern={}; errorMsg = {}",
+                    dateString,
+                    pattern,
+                    e.getMessage());
             return null;
         }
     }
-
 
     // ---------------------- add date ----------------------
 
@@ -152,5 +156,4 @@ public class DateUtil {
         c.add(calendarField, amount);
         return c.getTime();
     }
-
 }

@@ -3,9 +3,7 @@ package com.xxl.job.core.util;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-/**
- * @author xuxueli 2018-10-20 20:07:26
- */
+/** @author xuxueli 2018-10-20 20:07:26 */
 public class ThrowableUtil {
 
     /**
@@ -20,5 +18,4 @@ public class ThrowableUtil {
         String errorMsg = stringWriter.toString();
         return errorMsg;
     }
-
 }

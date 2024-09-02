@@ -2,14 +2,12 @@ package com.xxl.job.core.biz.model;
 
 import java.io.Serializable;
 
-/**
- * @author xuxueli 2020-04-11 22:27
- */
+/** @author xuxueli 2020-04-11 22:27 */
 public class LogParam implements Serializable {
     private static final long serialVersionUID = 42L;
 
-    public LogParam() {
-    }
+    public LogParam() {}
+
     public LogParam(long logDateTim, long logId, int fromLineNum) {
         this.logDateTim = logDateTim;
         this.logId = logId;
@@ -43,5 +41,4 @@ public class LogParam implements Serializable {
     public void setFromLineNum(int fromLineNum) {
         this.fromLineNum = fromLineNum;
     }
-
 }

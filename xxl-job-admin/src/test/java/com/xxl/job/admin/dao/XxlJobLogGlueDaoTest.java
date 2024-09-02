@@ -1,12 +1,11 @@
 package com.xxl.job.admin.dao;
 
 import com.xxl.job.admin.core.model.XxlJobLogGlue;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class XxlJobLogGlueDaoTest {
@@ -15,7 +14,7 @@ public class XxlJobLogGlueDaoTest {
     private XxlJobLogGlueDao xxlJobLogGlueDao;
 
     @Test
-    public void test(){
+    public void test() {
         XxlJobLogGlue logGlue = new XxlJobLogGlue();
         logGlue.setJobId(1);
         logGlue.setGlueType("1");
@@ -30,7 +29,6 @@ public class XxlJobLogGlueDaoTest {
 
         int ret2 = xxlJobLogGlueDao.removeOld(1, 1);
 
-        int ret3 =xxlJobLogGlueDao.deleteByJobId(1);
+        int ret3 = xxlJobLogGlueDao.deleteByJobId(1);
     }
-
 }

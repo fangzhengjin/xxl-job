@@ -6,17 +6,14 @@ import com.xxl.job.admin.core.util.I18nUtil;
 import com.xxl.job.admin.core.util.JacksonUtil;
 import com.xxl.job.admin.dao.XxlJobUserDao;
 import com.xxl.job.core.biz.model.ReturnT;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.math.BigInteger;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.DigestUtils;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.math.BigInteger;
-
-/**
- * @author xuxueli 2019-05-04 22:13:264
- */
+/** @author xuxueli 2019-05-04 22:13:264 */
 @Configuration
 public class LoginService {
 
@@ -25,26 +22,33 @@ public class LoginService {
     @Resource
     private XxlJobUserDao xxlJobUserDao;
 
-
-    private String makeToken(XxlJobUser xxlJobUser){
+    private String makeToken(XxlJobUser xxlJobUser) {
         String tokenJson = JacksonUtil.writeValueAsString(xxlJobUser);
         String tokenHex = new BigInteger(tokenJson.getBytes()).toString(16);
         return tokenHex;
     }
-    private XxlJobUser parseToken(String tokenHex){
+
+    private XxlJobUser parseToken(String tokenHex) {
         XxlJobUser xxlJobUser = null;
         if (tokenHex != null) {
-            String tokenJson = new String(new BigInteger(tokenHex, 16).toByteArray());      // username_password(md5)
+            String tokenJson = new String(new BigInteger(tokenHex, 16).toByteArray()); // username_password(md5)
             xxlJobUser = JacksonUtil.readValue(tokenJson, XxlJobUser.class);
         }
         return xxlJobUser;
     }
 
-
-    public ReturnT<String> login(HttpServletRequest request, HttpServletResponse response, String username, String password, boolean ifRemember){
+    public ReturnT<String> login(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            String username,
+            String password,
+            boolean ifRemember) {
 
         // param
-        if (username==null || username.trim().length()==0 || password==null || password.trim().length()==0){
+        if (username == null
+                || username.trim().length() == 0
+                || password == null
+                || password.trim().length() == 0) {
             return new ReturnT<String>(500, I18nUtil.getString("login_param_empty"));
         }
 
@@ -71,7 +75,7 @@ public class LoginService {
      * @param request
      * @param response
      */
-    public ReturnT<String> logout(HttpServletRequest request, HttpServletResponse response){
+    public ReturnT<String> logout(HttpServletRequest request, HttpServletResponse response) {
         CookieUtil.remove(request, response, LOGIN_IDENTITY_KEY);
         return ReturnT.SUCCESS;
     }
@@ -82,7 +86,7 @@ public class LoginService {
      * @param request
      * @return
      */
-    public XxlJobUser ifLogin(HttpServletRequest request, HttpServletResponse response){
+    public XxlJobUser ifLogin(HttpServletRequest request, HttpServletResponse response) {
         String cookieToken = CookieUtil.getValue(request, LOGIN_IDENTITY_KEY);
         if (cookieToken != null) {
             XxlJobUser cookieUser = null;
@@ -102,6 +106,4 @@ public class LoginService {
         }
         return null;
     }
-
-
 }

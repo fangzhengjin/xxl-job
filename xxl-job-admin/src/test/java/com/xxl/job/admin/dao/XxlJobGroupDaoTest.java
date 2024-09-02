@@ -1,12 +1,11 @@
 package com.xxl.job.admin.dao;
 
 import com.xxl.job.admin.core.model.XxlJobGroup;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class XxlJobGroupDaoTest {
@@ -15,7 +14,7 @@ public class XxlJobGroupDaoTest {
     private XxlJobGroupDao xxlJobGroupDao;
 
     @Test
-    public void test(){
+    public void test() {
         List<XxlJobGroup> list = xxlJobGroupDao.findAll();
 
         List<XxlJobGroup> list2 = xxlJobGroupDao.findByAddressType(0);
@@ -40,5 +39,4 @@ public class XxlJobGroupDaoTest {
 
         int ret3 = xxlJobGroupDao.remove(group.getId());
     }
-
 }

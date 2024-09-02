@@ -1,16 +1,12 @@
 package com.xxl.job.core.util;
 
+import java.io.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
-
-/**
- * @author xuxueli 2020-04-12 0:14:00
- */
+/** @author xuxueli 2020-04-12 0:14:00 */
 public class JdkSerializeTool {
     private static Logger logger = LoggerFactory.getLogger(JdkSerializeTool.class);
-
 
     // ------------------------ serialize and unserialize ------------------------
 
@@ -43,14 +39,13 @@ public class JdkSerializeTool {
         return null;
     }
 
-
     /**
      * 将byte[] -->Object
      *
      * @param bytes
      * @return
      */
-    public static  <T> Object deserialize(byte[] bytes, Class<T> clazz) {
+    public static <T> Object deserialize(byte[] bytes, Class<T> clazz) {
         ByteArrayInputStream bais = null;
         try {
             // 反序列化
@@ -68,6 +63,4 @@ public class JdkSerializeTool {
         }
         return null;
     }
-
-
 }
